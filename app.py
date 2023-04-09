@@ -72,5 +72,6 @@ def delete_vacation_spot(id):
         return jsonify({'error': 'Vacation spot not found.'}), 404
 
 if __name__ == '__main__':
-    db.create_all()
+    with app.app_context():  # Add this line to set up Flask application context
+        db.create_all()  # Move this line inside the app context
     app.run(debug=True)
